@@ -19,10 +19,10 @@ class Vertex:
         return list(self.edges.keys())
 
 
-lake = Vertex("Lake")
-print(lake.get_edges())
+# lake = Vertex("Lake")
+# print(lake.get_edges())
 
-chicago = Vertex("Chicago")
-lake.add_edge(chicago)
+# chicago = Vertex("Chicago")
+# lake.add_edge(chicago)
 
-print(lake.get_edges(), chicago.get_edges())
+# print(lake.get_edges(), chicago.get_edges())
