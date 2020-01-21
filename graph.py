@@ -12,24 +12,28 @@ class Graph:
         self.graph_dict = {}
 
     def add_vertex(self, vertex):
-        print("Adding " + vertex.value)
         self.graph_dict[vertex.value] = vertex 
 
     def add_edge(self, from_vertex, to_vertex, weight=0):
-        print("Adding edge from " + str(from_vertex.value) + " to " + str(to_vertex.value))
         self.graph_dict[from_vertex.value] = from_vertex.add_edge(to_vertex.value, weight)
 
         if not self.directed:
             self.graph_dict[to_vertex.value] = to_vertex.add_edge(from_vertex.value, weight)
 
     def find_path(self, start_vertex, end_vertex):
-        print("Searching from " + str(start_vertex.value) + " to " + str(end_vertex.value))
         start = [start_vertex]
         while len(start) > 0:
-            current_vertex = start.pop()
+            current_vertex = start.pop(0)
             # current_vertex is end_vertex
+            if current_vertex == end_vertex:
                 # a path exists!
+                return True
             # current_vertex is not end_vertex
-                # add vertices connected to 
-                # current_vertex onto the list
-                # to keep searching for a path
+            vertex = self.graph_dict[current_vertex]
+            # add vertices connected to 
+            next_vertices = vertex.get_edges()
+            # current_vertex onto the list
+            start.extend(next_vertices)
+            # to keep searching for a path
+            print("Visiting " + current_vertex)
+        return False

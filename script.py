@@ -2,26 +2,34 @@
 from graph import Graph
 from vertex import Vertex
 
+no_path_exists = True
+
 # make the Graph instance
-railway = Graph()
+directed_railway = Graph(True)
 
 # create Vertex instances
-station_one = Vertex("Chicago")
-station_two = Vertex("Lake")
-station_three = Vertex("Grand")
+callan_station = Vertex('callan')
+peel_station = Vertex('peel')
+ulfstead_station = Vertex('ulfstead')
+harwick_station = Vertex('harwick')
 
 # call .add_vertex()
-railway.add_vertex(station_one)
-railway.add_vertex(station_two)
-railway.add_vertex(station_three)
+directed_railway.add_vertex(callan_station)
+directed_railway.add_vertex(peel_station)
+directed_railway.add_vertex(harwick_station)
+directed_railway.add_vertex(ulfstead_station)
 
 # call .add_edge()
-railway.add_edge(station_one, station_two, 3)
-railway.add_edge(station_three, station_two, 5)
-railway.add_edge(station_three, station_one)
+directed_railway.add_edge(harwick_station, peel_station)
+directed_railway.add_edge(peel_station, callan_station)
 
-print(station_one.edges)
-print(station_three.edges)
-print(station_two.edges)
+path_exists = directed_railway.find_path('harwick', 'harwick')
+print(path_exists)
 
-railway.find_path(station_one, station_two)
+# Uncomment for final checkpoint
+print("\n\n\nFinding path from harwick to callan\n")
+new_path_exists = directed_railway.find_path('harwick', 'callan')
+print(new_path_exists)
+print("\n\nTrying to find path from harwick to ulfstead\n")
+no_path_exists = directed_railway.find_path('harwick', 'ulfstead')
+print(no_path_exists)
