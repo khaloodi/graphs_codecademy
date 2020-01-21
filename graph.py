@@ -15,11 +15,9 @@ class Graph:
         print("Adding " + vertex.value)
         self.graph_dict[vertex.value] = vertex 
 
+    def add_edge(self, from_vertex, to_vertex):
+        print("Adding edge from " + str(from_vertex.value) + " to " + str(to_vertex.value))
+        self.graph_dict[from_vertex.value] = from_vertex.add_edge(to_vertex.value)
 
-grand_central = Vertex("Grand Central Station")
-
-railway = Graph()
-
-print(railway.graph_dict)
-railway.add_vertex(grand_central)
-print(railway.graph_dict)
+        if not self.directed:
+            self.graph_dict[to_vertex.value] = to_vertex.add_edge(from_vertex.value)
