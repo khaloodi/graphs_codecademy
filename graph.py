@@ -21,3 +21,15 @@ class Graph:
 
         if not self.directed:
             self.graph_dict[to_vertex.value] = to_vertex.add_edge(from_vertex.value, weight)
+
+    def find_path(self, start_vertex, end_vertex):
+        print("Searching from " + str(start_vertex.value) + " to " + str(end_vertex.value))
+        start = [start_vertex]
+        while len(start) > 0:
+            current_vertex = start.pop()
+            # current_vertex is end_vertex
+                # a path exists!
+            # current_vertex is not end_vertex
+                # add vertices connected to 
+                # current_vertex onto the list
+                # to keep searching for a path

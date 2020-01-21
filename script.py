@@ -23,3 +23,5 @@ railway.add_edge(station_three, station_one)
 print(station_one.edges)
 print(station_three.edges)
 print(station_two.edges)
+
+railway.find_path(station_one, station_two)
