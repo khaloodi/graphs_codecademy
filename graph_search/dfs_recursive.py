@@ -37,6 +37,8 @@ def dfs(graph, current_vertex, target_value, visited=None):
         if neighbor not in visited:
         # recursively call dfs on neighbor
             path = dfs(graph, neighbor, target_value, visited)
+            # We don’t want DFS to return None just because the first route it checked didn’t exist.
+            # check if path exists. If so, return path.
             # if a path exists:
             if path:
             # return the path
